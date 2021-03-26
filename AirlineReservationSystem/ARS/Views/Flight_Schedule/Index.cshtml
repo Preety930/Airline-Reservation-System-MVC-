@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ARSDAL.Flight_Schedule>
+
+
+@{
+    //ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutFinal.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table bg-dark text-white">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FlightDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Departure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Arrival)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AirCraft1.AcNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AirFare.Fare)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departure)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Arrival)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AirCraft1.AcNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AirFare.Fare)
+            </td>
+            <td>
+                @Html.ActionLink("Modify", "Edit", new { id = item.FlID }) |
+                @Html.ActionLink("Info", "Details", new { id = item.FlID }) |
+                @Html.ActionLink("Remove", "Delete", new { id = item.FlID })
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="w3-container ">
+
+    <center><button class="w3-button w3-border w3-hover-black " style="font-size:larger"><a href="~/ARSAdmin/Page2">Next</a></button></center>
+</div>

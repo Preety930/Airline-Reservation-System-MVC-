@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ARSDAL.AirCraft>
+
+@{
+    //ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutFinal.cshtml";
+}
+
+<center><h2>AirCraft Details</h2></center>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table bg-dark text-white ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AcNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MfdBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MfdOn)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.AcNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Capacity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MfdBy)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MfdOn)
+    </td>
+
+    @*@Html.Partial("_TableButtonPartial", new { id = item.AcID });*@
+    <td>
+            @Html.ActionLink("Modify", "Edit", new { id=item.AcID }) |
+            @Html.ActionLink("Info", "Details", new { id=item.AcID }) |
+            @Html.ActionLink("Remove", "Delete", new { id=item.AcID })
+        </td>
+
+</tr>
+}
+
+</table>

@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ARSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Branch" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Branch1" Relationship="Self.fk_Branch" FromRole="Admin" ToRole="Branches" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AirCraft">
+    <Key>
+      <PropertyRef Name="AcID" />
+    </Key>
+    <Property Name="AcID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AcNumber" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Capacity" Type="Int32" Nullable="false" />
+    <Property Name="MfdBy" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MfdOn" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Flight_Schedule" Relationship="Self.fk_AirCraft" FromRole="AirCrafts" ToRole="Flight_Schedule" />
+  </EntityType>
+  <EntityType Name="AirFare">
+    <Key>
+      <PropertyRef Name="AfID" />
+    </Key>
+    <Property Name="AfID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Route" Type="Int32" />
+    <Property Name="Fare" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="FSC" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Flight_Schedule" Relationship="Self.fk_NetFare" FromRole="AirFare" ToRole="Flight_Schedule" />
+    <NavigationProperty Name="Route1" Relationship="Self.fk_Route" FromRole="AirFare" ToRole="Route" />
+  </EntityType>
+  <EntityType Name="Branch">
+    <Key>
+      <PropertyRef Name="BrID" />
+    </Key>
+    <Property Name="BrID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Center" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="State" Type="Int32" />
+    <NavigationProperty Name="Admins" Relationship="Self.fk_Branch" FromRole="Branches" ToRole="Admin" />
+    <NavigationProperty Name="State1" Relationship="Self.fk_StateOfEmployee" FromRole="Branches" ToRole="State" />
+  </EntityType>
+  <EntityType Name="Charge">
+    <Key>
+      <PropertyRef Name="ChID" />
+    </Key>
+    <Property Name="ChID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Contact_Details">
+    <Key>
+      <PropertyRef Name="CnID" />
+    </Key>
+    <Property Name="CnID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cell" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tel" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="Street" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="State1" Relationship="Self.fk_State" FromRole="Contact_Details" ToRole="State" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CtID" />
+    </Key>
+    <Property Name="CtID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="States" Relationship="Self.fk_Country" FromRole="Countries" ToRole="State" />
+  </EntityType>
+  <EntityType Name="Discount">
+    <Key>
+      <PropertyRef Name="DiID" />
+    </Key>
+    <Property Name="DiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Flight_Schedule">
+    <Key>
+      <PropertyRef Name="FlID" />
+    </Key>
+    <Property Name="FlID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FlightDate" Type="DateTime" Precision="3" />
+    <Property Name="Departure" Type="DateTime" Precision="3" />
+    <Property Name="Arrival" Type="DateTime" Precision="3" />
+    <Property Name="AirCraft" Type="Int32" />
+    <Property Name="NetFare" Type="Int32" />
+    <NavigationProperty Name="AirCraft1" Relationship="Self.fk_AirCraft" FromRole="Flight_Schedule" ToRole="AirCrafts" />
+    <NavigationProperty Name="AirFare" Relationship="Self.fk_NetFare" FromRole="Flight_Schedule" ToRole="AirFare" />
+  </EntityType>
+  <EntityType Name="Passenger">
+    <Key>
+      <PropertyRef Name="PsID" />
+    </Key>
+    <Property Name="PsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Age" Type="Int32" Nullable="false" />
+    <Property Name="Nationality" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Bookings" Relationship="ARSModel.fk_PID" FromRole="Passenger" ToRole="Booking" />
+  </EntityType>
+  <EntityType Name="Route">
+    <Key>
+      <PropertyRef Name="RtID" />
+    </Key>
+    <Property Name="RtID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Airport" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Destination" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RouteCode" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AirFares" Relationship="Self.fk_Route" FromRole="Route" ToRole="AirFare" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StID" />
+    </Key>
+    <Property Name="StID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="Int32" />
+    <NavigationProperty Name="Branches" Relationship="Self.fk_StateOfEmployee" FromRole="State" ToRole="Branches" />
+    <NavigationProperty Name="Contact_Details" Relationship="Self.fk_State" FromRole="State" ToRole="Contact_Details" />
+    <NavigationProperty Name="Country1" Relationship="Self.fk_Country" FromRole="State" ToRole="Countries" />
+  </EntityType>
+  <Association Name="fk_Branch">
+    <End Role="Branches" Type="Self.Branch" Multiplicity="1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branches">
+        <PropertyRef Name="BrID" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="Branch" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_AirCraft">
+    <End Role="AirCrafts" Type="Self.AirCraft" Multiplicity="0..1" />
+    <End Role="Flight_Schedule" Type="Self.Flight_Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AirCrafts">
+        <PropertyRef Name="AcID" />
+      </Principal>
+      <Dependent Role="Flight_Schedule">
+        <PropertyRef Name="AirCraft" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_NetFare">
+    <End Role="AirFare" Type="Self.AirFare" Multiplicity="0..1" />
+    <End Role="Flight_Schedule" Type="Self.Flight_Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AirFare">
+        <PropertyRef Name="AfID" />
+      </Principal>
+      <Dependent Role="Flight_Schedule">
+        <PropertyRef Name="NetFare" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Route">
+    <End Role="Route" Type="Self.Route" Multiplicity="0..1" />
+    <End Role="AirFare" Type="Self.AirFare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="RtID" />
+      </Principal>
+      <Dependent Role="AirFare">
+        <PropertyRef Name="Route" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_StateOfEmployee">
+    <End Role="State" Type="Self.State" Multiplicity="0..1" />
+    <End Role="Branches" Type="Self.Branch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StID" />
+      </Principal>
+      <Dependent Role="Branches">
+        <PropertyRef Name="State" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_State">
+    <End Role="State" Type="Self.State" Multiplicity="1" />
+    <End Role="Contact_Details" Type="Self.Contact_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StID" />
+      </Principal>
+      <Dependent Role="Contact_Details">
+        <PropertyRef Name="State" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Country">
+    <End Role="Countries" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="State" Type="Self.State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="CtID" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="Country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ARSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="AirCrafts" EntityType="Self.AirCraft" />
+    <EntitySet Name="AirFares" EntityType="Self.AirFare" />
+    <EntitySet Name="Branches" EntityType="Self.Branch" />
+    <EntitySet Name="Charges" EntityType="Self.Charge" />
+    <EntitySet Name="Contact_Details" EntityType="Self.Contact_Details" />
+    <EntitySet Name="Countries" EntityType="Self.Country" />
+    <EntitySet Name="Discounts" EntityType="Self.Discount" />
+    <EntitySet Name="Flight_Schedule" EntityType="Self.Flight_Schedule" />
+    <EntitySet Name="Passengers" EntityType="Self.Passenger" />
+    <EntitySet Name="Routes" EntityType="Self.Route" />
+    <EntitySet Name="States" EntityType="Self.State" />
+    <AssociationSet Name="fk_Branch" Association="Self.fk_Branch">
+      <End Role="Branches" EntitySet="Branches" />
+      <End Role="Admin" EntitySet="Admins" />
+    </AssociationSet>
+    <AssociationSet Name="fk_AirCraft" Association="Self.fk_AirCraft">
+      <End Role="AirCrafts" EntitySet="AirCrafts" />
+      <End Role="Flight_Schedule" EntitySet="Flight_Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="fk_NetFare" Association="Self.fk_NetFare">
+      <End Role="AirFare" EntitySet="AirFares" />
+      <End Role="Flight_Schedule" EntitySet="Flight_Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Route" Association="Self.fk_Route">
+      <End Role="Route" EntitySet="Routes" />
+      <End Role="AirFare" EntitySet="AirFares" />
+    </AssociationSet>
+    <AssociationSet Name="fk_StateOfEmployee" Association="Self.fk_StateOfEmployee">
+      <End Role="State" EntitySet="States" />
+      <End Role="Branches" EntitySet="Branches" />
+    </AssociationSet>
+    <AssociationSet Name="fk_State" Association="Self.fk_State">
+      <End Role="State" EntitySet="States" />
+      <End Role="Contact_Details" EntitySet="Contact_Details" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Country" Association="Self.fk_Country">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="State" EntitySet="States" />
+    </AssociationSet>
+    <FunctionImport Name="SearchFlight" ReturnType="Collection(ARSModel.SearchFlight_Result)">
+      <Parameter Name="Airport" Mode="In" Type="String" />
+      <Parameter Name="Destination" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SearchFlight1">
+      <Parameter Name="Airport" Mode="In" Type="String" />
+      <Parameter Name="Destination" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SearchFlight2">
+      <Parameter Name="Airport" Mode="In" Type="String" />
+      <Parameter Name="Destination" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SearchFlight3">
+      <Parameter Name="Airport" Mode="In" Type="String" />
+      <Parameter Name="Destination" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SearchFlightNew" ReturnType="Collection(ARSModel.SearchFlightNew_Result)">
+      <Parameter Name="Airport" Mode="In" Type="String" />
+      <Parameter Name="Destination" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SearchFlightNew1">
+      <Parameter Name="Airport" Mode="In" Type="String" />
+      <Parameter Name="Destination" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DecrementCapacity">
+      <Parameter Name="AcNumber" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="Bookings" EntityType="ARSModel.Booking" />
+    <AssociationSet Name="fk_PID" Association="ARSModel.fk_PID">
+      <End Role="Passenger" EntitySet="Passengers" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <FunctionImport Name="AmountToPay">
+      <Parameter Name="Departure" Mode="In" Type="DateTime" />
+      <Parameter Name="PsID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ViewTicket" ReturnType="Collection(ARSModel.ViewTicket_Result)">
+      <Parameter Name="PsID" Mode="In" Type="Int32" />
+      <Parameter Name="Departure" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="ViewTicket1" EntitySet="Bookings" ReturnType="Collection(ARSModel.Booking)">
+      <Parameter Name="PsID" Mode="In" Type="Int32" />
+      <Parameter Name="Departure" Mode="In" Type="DateTime" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SearchFlight_Result">
+    <Property Type="String" Name="AcNumber" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="Airport" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="Destination" Nullable="false" MaxLength="32" />
+    <Property Type="Int32" Name="Capacity" Nullable="false" />
+    <Property Type="DateTime" Name="Departure" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="Arrival" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="Fare" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="SearchFlightNew_Result">
+    <Property Type="Int32" Name="FlID" Nullable="false" />
+    <Property Type="String" Name="AcNumber" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="Airport" Nullable="false" MaxLength="32" />
+    <Property Type="String" Name="Destination" Nullable="false" MaxLength="32" />
+    <Property Type="Int32" Name="Capacity" Nullable="false" />
+    <Property Type="DateTime" Name="Departure" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="Arrival" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="Fare" Nullable="true" Precision="19" />
+  </ComplexType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="TransID" />
+    </Key>
+    <Property Name="TransID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PsID" Type="Int32" />
+    <Property Name="PAssengerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="AcNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Departure" Type="DateTime" Precision="3" />
+    <Property Name="Arrival" Type="DateTime" Precision="3" />
+    <Property Name="Airport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Destination" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fare" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Passenger" Relationship="ARSModel.fk_PID" FromRole="Booking" ToRole="Passenger" />
+  </EntityType>
+  <Association Name="fk_PID">
+    <End Type="ARSModel.Passenger" Role="Passenger" Multiplicity="0..1" />
+    <End Type="ARSModel.Booking" Role="Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="PsID" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="PsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="ViewTicket_Result">
+    <Property Type="Int32" Name="Transaction_ID" Nullable="false" />
+    <Property Type="String" Name="PassengerName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Age" Nullable="true" />
+    <Property Type="String" Name="Flight_Number" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Departure" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="Arrival" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Airport" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Destination" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Fare" Nullable="true" Precision="19" />
+  </ComplexType>
+</Schema>

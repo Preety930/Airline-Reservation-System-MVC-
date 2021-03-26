@@ -1,0 +1,65 @@
+﻿@model ARSDAL.Flight_Schedule
+
+@{
+    //ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayoutFinal.cshtml";
+}
+
+
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Flight_Schedule</h4>
+    <hr />
+    <dl class="dl-horizontal bg-dark text-white">
+        <dt>
+            @Html.DisplayNameFor(model => model.FlightDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlightDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Departure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Departure)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Arrival)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Arrival)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AirCraft1.AcNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AirCraft1.AcNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AirFare.Fare)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AirFare.Fare)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

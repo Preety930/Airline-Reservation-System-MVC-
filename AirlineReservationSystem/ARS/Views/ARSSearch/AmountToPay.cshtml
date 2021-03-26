@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "AmountToPay";
+}
+
+<h2>AmountToPay</h2>
+@ViewBag.Message
+
+@using (Html.BeginForm("ViewTicket", "ARSSearch", FormMethod.Post))
+
+{
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Confirm Ticket" onclick="location.href ='@Url.Action("ViewTicket", "ARSSearch")'" class="btn btn-default" />
+    </div>
+}

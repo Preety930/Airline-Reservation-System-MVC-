@@ -1,0 +1,121 @@
+﻿@model ARSDAL.Booking
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_PassengerLayoutPage.cshtml";
+}
+
+@ViewBag.Message
+
+@using (Html.BeginForm("AmountToPay", "ARSSearch", FormMethod.Post))
+
+{
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Confirm Ticket" onclick="location.href ='@Url.Action("AmountToPay", "ARSSearch")'" class="btn btn-default" />
+    </div>
+}
+
+@using (Html.BeginForm("Pay", "ARSSearch", FormMethod.Post))
+
+{
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Proceed to Pay" onclick="location.href ='@Url.Action("Pay", "ARSSearch")'" class="btn btn-default" />
+    </div>
+}
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-horizontal bg-primary-light text-dark">
+        <center><h3><strong>Booking Details</strong></h3></center>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.PsID, "PsID", htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:larger;color:black;" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PsID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PsID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PAssengerName, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:larger;color:black;" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PAssengerName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PAssengerName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:larger;color:black;" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AcNumber, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:larger;color:black;" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AcNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AcNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Departure, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:larger;color:black;" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Departure, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Departure, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Arrival, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:larger;color:black;" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Arrival, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Arrival, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Airport, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:larger;color:black;" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Airport, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Airport, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Destination, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:larger;color:black;" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Destination, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Destination, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fare, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:larger;color:black;" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Fare, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Fare, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add Passenger" class="btn btn-default" />
+            </div>
+            <br />
+
+
+        </div>
+    </div>
+}
+
+
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@

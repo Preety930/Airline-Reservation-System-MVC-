@@ -1,0 +1,43 @@
+﻿@model ARSDAL.Route
+
+@{
+    //ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayoutFinal.cshtml";
+}
+
+
+
+<div>
+    <h4>Route</h4>
+    <hr />
+    <dl class="dl-horizontal bg-dark text-white">
+        <dt>
+            @Html.DisplayNameFor(model => model.Airport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Airport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Destination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Destination)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RouteCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RouteCode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modify", "Edit", new { id = Model.RtID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

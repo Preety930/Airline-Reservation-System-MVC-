@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GraphQL-Parser</name>
+    </assembly>
+    <members>
+        <member name="P:GraphQLParser.AST.GraphQLLocation.Start">
+             <summary>
+             The index for the start of the node in the source (i.e. it's inclusive).
+            
+             For example,
+                 { field { subfield } }
+                   ^ field.Location.Start = 2
+             </summary>
+        </member>
+        <member name="P:GraphQLParser.AST.GraphQLLocation.End">
+             <summary>
+             The index for the character immediately after the node in the source (i.e. it's exclusive).
+            
+             For example,
+                 { field { subfield } }
+                                     ^ field.Location.End = 20
+             </summary>
+        </member>
+        <member name="T:GraphQLParser.ILexemeCache">
+            <summary>
+            Interface for caching token values. This cache allows you to reuse string values such
+            as field names, argument values received when the <see cref="T:GraphQLParser.Lexer"/> is running.
+            </summary>
+        </member>
+        <member name="T:GraphQLParser.NoCache">
+            <summary>
+            <see cref="T:GraphQLParser.ILexemeCache"/> implementation without caching. It is used by default.
+            </summary>
+        </member>
+        <member name="M:GraphQLParser.StringHelper.Equals(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Determines the equivalence of the string <paramref name="str"/> to a substring from <paramref name="source"/>
+            defined by the <paramref name="start"/> and <paramref name="end"/> index.
+            </summary>
+            <param name="str"></param>
+            <param name="source"></param>
+            <param name="start"></param>
+            <param name="end"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GraphQLParser.StringHelper.GetHashCode(System.String,System.Int32,System.Int32)">
+            <summary>
+            Determines the hash code of the substring from the <paramref name="source"/> specified by
+            the <paramref name="start"/> and <paramref name="end"/> index.
+            </summary>
+            <param name="source"></param>
+            <param name="start"></param>
+            <param name="end"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GraphQLParser.StringHelper.ParseInt(System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets the integer value of the substring from the <paramref name="source"/> specified
+            by the <paramref name="start"/> and <paramref name="end"/> index.
+            </summary>
+            <param name="source"></param>
+            <param name="start"></param>
+            <param name="end"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GraphQLParser.ParserContext.ParseDirectiveDefinition">
+            <summary>
+            http://spec.graphql.org/draft/#DirectiveDefinition
+            DirectiveDefinition:
+                Description(opt) directive @ Name ArgumentsDefinition(opt) repeatable(opt) on DirectiveLocations
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,45 @@
+﻿
+@model ARS.Models.FromTo
+@{ ViewBag.Title = "search"; }
+@{
+    Layout = "~/Views/Shared/_PassengerLayoutPage.cshtml";
+}
+@using (Html.BeginForm("fsearch", "ARSSearch", FormMethod.Post))
+{
+    <center><h3><strong>Search Flights</strong></h3></center>
+<table class="table bg-dark text-white">
+    <tr>
+        
+        <th><lable>From</lable></th>
+        <th><lable>To</lable></th>
+    </tr>
+    
+    <tr>
+        <td>
+            <datalist id="dcity">
+                @foreach (var item in @ViewBag.dcity)
+                {
+<option>@item</option>}
+            </datalist>
+            <input type="text" name="from" id="from" class="city1" placeholder="Type Departure City" required list="dcity">
+        </td>
+        <td>
+            <datalist id="acity">
+                @foreach (var item in @ViewBag.acity)
+                {
+<option>@item</option>}
+            </datalist>
+            <input type="text" name="to" id="to" class="city1" placeholder="Type Departure City" required list="acity">
+        </td>
+        <td>
+            
+
+
+
+
+            <input type="submit" value="Search Flight" onclick="location.href = '@Url.Action("fsearch", "ARSSearch")'" class="btn btn-block text-white border-white">
+        </td>
+    </tr>
+</table>}
+
+

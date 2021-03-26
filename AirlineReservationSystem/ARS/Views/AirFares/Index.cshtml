@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ARSDAL.AirFare>
+
+@{
+    //ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutFinal.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table bg-dark text-white">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fare)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FSC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Route1.Airport)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fare)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FSC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Route1.Airport)
+        </td>
+        <td>
+            @Html.ActionLink("Modify", "Edit", new { id=item.AfID }) |
+            @Html.ActionLink("Info", "Details", new { id=item.AfID }) |
+            @Html.ActionLink("Remove", "Delete", new { id=item.AfID })
+        </td>
+    </tr>
+}
+
+</table>
+<div class="w3-container ">
+
+    <center><button class="w3-button w3-border w3-hover-black " style="font-size:larger"><a href="~/Flight_Schedule/Index">Next</a></button></center>
+</div>

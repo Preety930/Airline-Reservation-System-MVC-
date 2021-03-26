@@ -1,0 +1,67 @@
+﻿
+
+
+@model IEnumerable<ARS.Models.SearchTicket>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_PassengerLayoutPage.cshtml";
+    }
+
+<center><h3><strong>Flight Details</strong></h3></center>
+
+<table class="table bg-dark text-white">
+    <tr>
+        <td>
+            AcNumber
+        </td>
+        <td>
+            Airport
+        </td>
+        <td>
+            Destination
+        </td>
+        <td>
+            Capacity
+        </td>
+        <td>
+            Departure
+        </td>
+        <td>
+            Arrival
+        </td>
+        <td>
+            Fare
+        </td>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.aircrafts.AcNumber</td>
+    <td>@item.routes.Airport</td>
+    <td>@item.routes.Destination</td>
+    <td>@item.aircrafts.Capacity</td>
+    <td>@item.Flight.Departure</td>
+    <td>@item.Flight.Arrival</td>
+    <td>@item.airFares.Fare</td>
+        <td>
+            @*@if (Session["UserID"] == null)
+            {
+                <a href=" @Url.Action("Index","ARSPassengers")" class="btn btn-success">Please Login for Booking</a>
+            }
+            else*@
+            
+                <a href=" @Url.Action("Create","ARSSearch")" class="btn btn-success">Book Flight Now</a>
+                @*// @Html.ActionLink("Details", "Details", new { id = item.FlID }, null)
+
+            }*@
+        </td></tr>}
+
+
+
+</table>
+
+
+
+
+
+

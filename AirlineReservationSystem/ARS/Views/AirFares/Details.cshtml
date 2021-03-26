@@ -1,0 +1,43 @@
+﻿@model ARSDAL.AirFare
+
+@{
+    //ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayoutFinal.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AirFare</h4>
+    <hr />
+    <dl class="dl-horizontal bg-dark text-white">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fare)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fare)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FSC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FSC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Route1.Airport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Route1.Airport)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AfID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

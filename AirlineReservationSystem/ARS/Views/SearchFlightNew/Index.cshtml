@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ARSDAL.SearchFlightNew_Result>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AcNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Airport)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Destination)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Departure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Arrival)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fare)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.AcNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Airport)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Destination)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Capacity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Departure)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Arrival)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Fare)
+    </td>
+    @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FlID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FlID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FlID })
+        </td>*@
+<td>
+    @if (Session["UserID"] == null)
+    {
+        <a href=" @Url.Action("Index","ARSPassengers")" class="btn btn-success">Please Login for Booking</a>
+    }
+    else
+    {
+        <a href=" @Url.Action("Create","ARSSearch")" class="btn btn-success">Book Flight Now</a>
+       // @Html.ActionLink("Details", "Details", new { id = item.FlID }, null)
+
+    }
+</td>
+</tr>
+}
+
+</table>

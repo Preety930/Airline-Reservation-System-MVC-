@@ -1,0 +1,69 @@
+﻿@model ARSDAL.AirCraft
+
+@{
+    //ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayoutFinal.cshtml";
+}
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+<center><h2><strong>Enter AirCraft Details</strong></h2></center>
+    <div class="form-horizontal bg-primary-light text-dark">
+        <center>
+            
+                
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group font-weight-bold">
+
+                   
+                        @Html.LabelFor(model => model.AcNumber, htmlAttributes: new { @class = "control-label col-md-2 ", @style = "font-size:larger;color:black;" })
+                    
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.AcNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AcNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            
+            
+
+            <div class="form-group font-weight-bold">
+                @Html.LabelFor(model => model.Capacity, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:larger;color:black;" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.Capacity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Capacity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group font-weight-bold">
+                @Html.LabelFor(model => model.MfdBy, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:larger;color:black;" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.MfdBy, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MfdBy, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group font-weight-bold">
+                @Html.LabelFor(model => model.MfdOn, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-size:larger;color:black;" })
+                <div class="col-md-6">
+                    @Html.EditorFor(model => model.MfdOn, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MfdOn, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group font-weight-bold">
+                <div class="col-md-offset-2 col-md-10 font-weight-bold">
+                    <input type="submit" value="Save" class="btn btn-default font-weight-bold" />
+                </div>
+            </div>
+</center>   
+    </div>
+        
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

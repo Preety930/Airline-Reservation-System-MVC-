@@ -1,0 +1,52 @@
+﻿@model ARSDAL.AirCraft
+
+@{
+    //ViewBag.Title = "Details";
+    
+    Layout = "~/Views/Shared/_AdminLayoutFinal.cshtml";
+}
+
+<center><h2>Details</h2></center>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal bg-dark text-white ">
+        <dt>
+            @Html.DisplayNameFor(model => model.AcNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AcNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Capacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MfdBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MfdBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MfdOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MfdOn)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AcID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ARSDAL.Passenger>
+
+@{
+    ViewBag.Title = "Page1";
+    Layout = "~/Views/Shared/_AdminLayoutFinal.cshtml";
+}
+
+<center><h2>Passenger's Information</h2></center>
+
+
+<table class="table bg-dark text-white">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nationality)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th></th>*@
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nationality)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>*@
+       
+    </tr>
+}
+
+</table>

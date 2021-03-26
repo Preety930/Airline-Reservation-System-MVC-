@@ -1,0 +1,49 @@
+﻿@model ARSDAL.Route
+
+@{
+    //ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayoutFinal.cshtml";
+}
+
+
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal bg-dark text-white">
+        <dt>
+            @Html.DisplayNameFor(model => model.Airport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Airport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Destination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Destination)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RouteCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RouteCode)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

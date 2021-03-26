@@ -1,0 +1,141 @@
+﻿@model ARSDAL.Contact_Details
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_HomeHeaderLayout.cshtml";
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>RegistrationForm_v10 by Colorlib</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <!-- LINEARICONS -->
+
+    <link href="~/RegistrationContent/css/style.css" rel="stylesheet" />
+
+
+
+    <link href="~/RegistrationContent/fonts/linearicons/style.css" rel="stylesheet" />
+
+
+    <!-- STYLE CSS -->
+
+    <link href="~/RegistrationContent/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="inner">
+
+            <img src="~/RegistrationContent/images/image-1.png" alt="" class="image-1" />
+
+
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+        <form action=" ">
+           <h4><font color="@ViewBag.color">@ViewBag.Message</font></h4>
+            <br />
+            <h3>Contact_Details</h3>
+            @*<div class="form-horizontal">
+
+        <hr />
+        <hr />*@
+
+            @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">*@
+            @*@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">*@
+            <div class="form-holder">
+                <span class="lnr lnr-envelope "></span>
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+            @*</div>
+        </div>*@
+
+            @*<div class="form-group">
+        @Html.LabelFor(model => model.Cell, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">*@
+            <div class="form-holder">
+                <span class="lnr lnr-smartphone"></span>
+
+                @Html.EditorFor(model => model.Cell, new { htmlAttributes = new { @class = "form-control", @placeholder = "Cell" } })
+                @Html.ValidationMessageFor(model => model.Cell, "", new { @class = "text-danger" })
+            </div>
+            @*</div>
+        </div>*@
+
+            @*<div class="form-group">
+        @Html.LabelFor(model => model.Tel, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">*@
+            <div class="form-holder">
+                <span class="lnr lnr-phone-handset"></span>
+                @Html.EditorFor(model => model.Tel, new { htmlAttributes = new { @class = "form-control", @placeholder = "Telephone" } })
+                @Html.ValidationMessageFor(model => model.Tel, "", new { @class = "text-danger" })
+            </div>
+            @*</div>
+        </div>*@
+
+            @*<div class="form-group">
+        @Html.LabelFor(model => model.Street, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">*@
+            <div class="form-holder">
+                <span class="lnr lnr-apartment"></span>
+                @Html.EditorFor(model => model.Street, new { htmlAttributes = new { @class = "form-control", @placeholder = "Street" } })
+                @Html.ValidationMessageFor(model => model.Street, "", new { @class = "text-danger" })
+            </div>
+            @*</div>
+        </div>*@
+
+            @*<div class="form-group">
+        @Html.LabelFor(model => model.State, "State", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">*@
+            <div class="form-holder">
+                <span class="lnr lnr-menu-circle"></span>
+                @Html.DropDownList("State", null, htmlAttributes: new { @class = "form-control", @placeholder = "State" })
+                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+            </div>
+            @*</div>
+        </div>*@
+
+            <div class="form-group">
+                @*<div class="col-md-offset-2 col-md-10">*@
+                <input type="submit" value="Register" class="btn btn-default" />
+                @*</div>*@
+            </div>
+            <img src="~/RegistrationContent/images/image-2.png" alt="" class="image-2" />
+
+
+
+        </form>
+            }
+
+        </div>
+    </div>
+
+
+    <script src="~/RegistrationContent/js/jquery-3.3.1.min.js"></script>
+    <script src="~/RegistrationContent/js/main.js"></script>
+
+</body>
+</html>
+
+
+            
+@*<div class="w3-container text-white ">
+
+    <center><button class="w3-button w3-border w3-hover-black text-white" style="font-size:larger"><a href="~/ARSPassengers/Index">Done</a></button></center>
+</div>
+
+            }
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@

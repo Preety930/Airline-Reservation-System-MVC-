@@ -1,0 +1,58 @@
+﻿@model ARSDAL.Flight_Schedule
+
+@{
+    //ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayoutFinal.cshtml";
+}
+
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal bg-dark text-white">
+        <dt>
+            @Html.DisplayNameFor(model => model.FlightDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FlightDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Departure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Departure)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Arrival)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Arrival)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AirCraft1.AcNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AirCraft1.AcNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AirFare.Fare)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AirFare.Fare)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FlID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

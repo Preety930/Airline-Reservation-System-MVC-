@@ -1,0 +1,139 @@
+﻿@model ARSDAL.Passenger
+
+@{
+    ViewBag.Title = "Create";
+   
+    Layout = "~/Views/Shared/_HomeHeaderLayout.cshtml";
+}
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>RegistrationForm_v10 by Colorlib</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+        <!-- LINEARICONS -->
+
+        <link href="~/RegistrationContent/css/style.css" rel="stylesheet" />
+
+
+
+        <link href="~/RegistrationContent/fonts/linearicons/style.css" rel="stylesheet" />
+
+
+        <!-- STYLE CSS -->
+
+        <link href="~/RegistrationContent/css/style.css" rel="stylesheet" />
+    </head>
+
+
+    <body>
+        @*@using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()*@
+            <div class="wrapper">
+                <div class="inner">
+
+                    <img src="~/RegistrationContent/images/image-1.png" alt="" class="image-1" />
+
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <form action="">
+                            <h3>New Account?</h3>
+                            @*<div class="form-horizontal bg-dark text-white">
+                <h4>Registration</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                            @*<div class="col-md-10">*@
+                            <div class="form-holder">
+                                <span class="lnr lnr-user"></span>
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = " Name" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                            @*</div>*@
+
+                            @*<div class="form-group">
+                @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">*@
+                            <div class="form-holder">
+                                <span class="lnr lnr-envelope"></span>
+                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @placeholder = " Address" } })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                            </div>
+
+
+                            @*<div class="form-group">*@
+                            @*@Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">*@
+                            <div class="form-holder">
+                                <span class="lnr lnr-eye"></span>
+
+                                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control", @placeholder = " Age" } })
+                                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                            </div>
+                            @*</div>*@
+                            @*</div>*@
+
+                            @*<div class="form-group">
+                @Html.LabelFor(model => model.Nationality, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">*@
+
+                            <div class="form-holder">
+                                <span class="lnr lnr-flag"></span>
+                                @Html.EditorFor(model => model.Nationality, new { htmlAttributes = new { @class = "form-control", @placeholder = " Nationality" } })
+                                @Html.ValidationMessageFor(model => model.Nationality, "", new { @class = "text-danger" })
+                            </div>
+
+                            @*</div>
+                </div>*@
+
+                            @*<div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">*@
+                            <div class="form-holder">
+                                <span class="lnr lnr-lock"></span>
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = " Password" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+                            @*</div>
+                </div>*@
+
+                            @*<div class="form-group">
+                <div class="col-md-offset-2 col-md-10">*@
+                            <div class="form-group">
+                                <input type="submit" value="Next" class="btn btn-default" />
+                            </div>
+
+
+                            @*</div>
+                </div>*@
+
+
+                            <img src="~/RegistrationContent/images/image-2.png" alt="" class="image-2" />
+                            
+
+
+                        </form>
+                    }
+
+                    </div>
+        </div>
+
+
+        <script src="~/RegistrationContent/js/jquery-3.3.1.min.js"></script>
+        <script src="~/RegistrationContent/js/main.js"></script>
+
+    </body>
+</html>
+
+
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
